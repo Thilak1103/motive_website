@@ -55,7 +55,8 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      className={cn("sticky inset-x-0 top-0 z-50 w-full pt-3", className)}
+      // Positioning is owned by <SiteHeader />, which is fixed to the viewport.
+      className={cn("relative inset-x-0 top-0 z-50 w-full pt-3", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)

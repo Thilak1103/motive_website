@@ -104,11 +104,12 @@ Each of these is also a `// TODO:` in the code.
 - [ ] `src/content/about.ts` — the About copy is written from the brief, not
       from an interview. Rewrite it in your own voice, and add the team.
 
-**Not yet verified**
-- [ ] Rendered visual check at 375 / 768 / 1440 and a browser console check.
-      `npm run build` and `tsc --noEmit` both pass clean, but the session this
-      was built in couldn't launch a browser, so nothing has been looked at in
-      a viewport yet. Run `npm run dev` and check the three pages.
+**Verified**
+- `npm run build`, `tsc --noEmit` and `npm run dev` all run clean.
+- All three pages captured at 375 / 768 / 1440 in Chromium: no console errors,
+  no page errors, no failed requests, no horizontal overflow at any width.
+- Sticky header confirmed present after scrolling at 375 and 1440, with the
+  primary CTA reachable without opening the mobile menu.
 
 ## Conventions
 

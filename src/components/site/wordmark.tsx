@@ -26,7 +26,11 @@ export const Wordmark = ({
   >
     <span
       aria-hidden="true"
-      className="grid h-7 w-7 place-items-center rounded-[0.5rem] bg-brand font-display text-sm font-extrabold text-accent"
+      className={cn(
+        "grid h-7 w-7 place-items-center rounded-[0.5rem] font-display text-sm font-extrabold",
+        // On the brand ground the badge has to invert, or it disappears.
+        tone === "inverse" ? "bg-accent text-brand" : "bg-brand text-accent",
+      )}
     >
       {siteConfig.name.charAt(0)}
     </span>

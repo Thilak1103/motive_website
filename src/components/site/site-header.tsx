@@ -32,7 +32,10 @@ export const SiteHeader = () => {
   const tone = scrolled ? "text-ink" : "text-ink-inverse";
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    // `fixed`, not `absolute` + a sticky child: a sticky element can only stick
+    // inside its own positioned ancestor, so nesting it in an absolute header
+    // made it scroll away (and produced ghosts in full-page captures).
+    <header className="fixed inset-x-0 top-0 z-50">
       <Navbar>
         {/* Desktop */}
         <NavBody>
