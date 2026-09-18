@@ -63,7 +63,9 @@ export const siteConfig = {
      */
     primary: {
       label: "Get early access",
-      href: "#early-access",
+      // Root-relative, not a bare fragment: the header is on every page, and
+      // #early-access only exists on the home page.
+      href: "/#early-access",
     } satisfies CallToAction,
     secondary: {
       label: "For societies",
@@ -72,14 +74,14 @@ export const siteConfig = {
     /** Committee-facing action used on /societies. */
     societies: {
       label: "List your society",
-      href: "#list-your-society",
+      href: "/societies#list-your-society",
     } satisfies CallToAction,
   },
 
   nav: [
+    { name: "About", link: "/about" },
     { name: "How it works", link: "/#how-it-works" },
     { name: "For societies", link: "/societies" },
-    { name: "About", link: "/about" },
   ] satisfies NavItem[],
 } as const;
 
