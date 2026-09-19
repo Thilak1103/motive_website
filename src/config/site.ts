@@ -78,11 +78,44 @@ export const siteConfig = {
     } satisfies CallToAction,
   },
 
+  /**
+   * Header navigation. Deliberately short and conversion-shaped — the brand
+   * guidelines live in the footer, not up here.
+   */
   nav: [
     { name: "About", link: "/about" },
     { name: "How it works", link: "/#how-it-works" },
     { name: "For societies", link: "/societies" },
   ] satisfies NavItem[],
+
+  /** Footer navigation, grouped by audience. */
+  footerNav: [
+    {
+      heading: "Students",
+      items: [
+        { name: "How it works", link: "/#how-it-works" },
+        { name: "What you get", link: "/#features" },
+        { name: "Questions", link: "/#faq" },
+        { name: "Get early access", link: "/#early-access" },
+      ],
+    },
+    {
+      heading: "Societies",
+      items: [
+        { name: "Why list with us", link: "/societies" },
+        { name: "What it costs", link: "/societies#cost" },
+        { name: "Committee questions", link: "/societies#faq" },
+        { name: "List your society", link: "/societies#list-your-society" },
+      ],
+    },
+    {
+      heading: "Company",
+      items: [
+        { name: "About", link: "/about" },
+        { name: "Brand guidelines", link: "/brand" },
+      ],
+    },
+  ] satisfies { heading: string; items: NavItem[] }[],
 } as const;
 
 export type SiteConfig = typeof siteConfig;
