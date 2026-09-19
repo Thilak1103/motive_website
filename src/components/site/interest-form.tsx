@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { CheckIcon, ArrowRightIcon } from "@/components/site/icons";
 
 export type FormField = {
   name: string;
@@ -17,18 +18,22 @@ export type FormField = {
  *
  * TODO: this form does not submit anywhere yet. Point `handleSubmit` at a real
  * endpoint (a form service, or a route handler under src/app/api) and remove
- * the simulated success state below.
+ * the simulated success state below. Until that happens, nothing anyone types
+ * into this site is stored anywhere.
  */
 export const InterestForm = ({
   fields,
   submitLabel,
   successMessage,
+  footnote,
   tone = "ink",
   className,
 }: {
   fields: FormField[];
   submitLabel: string;
   successMessage: string;
+  /** Small print under the button — what happens to the address. */
+  footnote?: string;
   /** `inverse` when the form sits on the brand-coloured ground. */
   tone?: "ink" | "inverse";
   className?: string;
@@ -49,20 +54,23 @@ export const InterestForm = ({
       <div
         role="status"
         className={cn(
-          "rounded-card border p-5 text-sm",
+          "flex items-start gap-3 rounded-card border p-5 text-body-sm",
           inverse
-            ? "border-brand-tint/40 bg-brand-deep text-brand-tint"
-            : "border-ink/15 bg-surface text-ink",
+            ? "border-accent/40 bg-brand-deep text-brand-tint"
+            : "border-accent-deep/40 bg-accent-wash text-ink",
           className,
         )}
       >
-        {successMessage}
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-pill bg-accent text-ink">
+          <CheckIcon className="h-4 w-4" />
+        </span>
+        <p className="pt-1">{successMessage}</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className={cn("space-y-3", className)}>
+    <form onSubmit={handleSubmit} className={cn("space-y-4", className)}>
       <div
         className={cn(
           "grid gap-3",
@@ -74,7 +82,7 @@ export const InterestForm = ({
             <label
               htmlFor={field.name}
               className={cn(
-                "text-xs font-semibold",
+                "text-caption font-semibold",
                 inverse ? "text-brand-tint" : "text-ink",
               )}
             >
@@ -94,9 +102,9 @@ export const InterestForm = ({
                 }))
               }
               className={cn(
-                "w-full rounded-pill border px-4 py-3 text-sm outline-none transition",
+                "w-full rounded-pill border px-4 py-3 text-body-sm outline-none transition-colors duration-[180ms] ease-brand",
                 inverse
-                  ? "border-brand-tint/40 bg-brand-deep text-ink-inverse placeholder:text-brand-tint/60 focus:border-accent"
+                  ? "border-brand-tint/35 bg-brand/60 text-ink-inverse placeholder:text-brand-tint/50 focus:border-accent"
                   : "border-ink/20 bg-surface text-ink placeholder:text-ink-muted/70 focus:border-ink",
               )}
             />
@@ -106,10 +114,22 @@ export const InterestForm = ({
 
       <button
         type="submit"
-        className="w-full rounded-pill bg-accent px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-accent-deep sm:w-auto"
+        className="group inline-flex w-full items-center justify-center gap-2 rounded-pill bg-accent px-6 py-3.5 text-body-sm font-semibold text-ink transition-[transform,background-color] duration-[180ms] ease-brand hover:-translate-y-0.5 hover:bg-accent-deep active:translate-y-0 sm:w-auto"
       >
         {submitLabel}
+        <ArrowRightIcon className="h-4 w-4 transition-transform duration-[180ms] ease-brand group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" />
       </button>
+
+      {footnote && (
+        <p
+          className={cn(
+            "text-caption",
+            inverse ? "text-brand-tint/70" : "text-ink-muted",
+          )}
+        >
+          {footnote}
+        </p>
+      )}
     </form>
   );
 };

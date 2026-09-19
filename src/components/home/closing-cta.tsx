@@ -1,4 +1,5 @@
-import { Container, Section } from "@/components/site/section";
+import { Container, Section, SectionHeading } from "@/components/site/section";
+import { Reveal } from "@/components/site/reveal";
 import { InterestForm } from "@/components/site/interest-form";
 import { closing } from "@/content/home";
 import { siteConfig } from "@/config/site";
@@ -9,33 +10,34 @@ import { siteConfig } from "@/config/site";
  * download prompt.
  */
 export const ClosingCta = () => (
-  <Section tone="brand" id="early-access">
+  <Section tone="brand-deep" id="early-access" grid>
     <Container>
-      <div className="grid items-start gap-10 lg:grid-cols-2">
-        <div>
-          <h2 className="max-w-lg font-display text-3xl font-extrabold leading-[1.05] text-ink-inverse sm:text-5xl lg:text-6xl">
-            {closing.headline}
-          </h2>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-brand-tint sm:text-lg">
-            {closing.body}
-          </p>
-        </div>
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <SectionHeading
+          eyebrow={closing.eyebrow}
+          headline={closing.headline}
+          lead={closing.body}
+          tone="inverse"
+        />
 
-        <div className="lg:pt-3">
-          <InterestForm
-            tone="inverse"
-            fields={[
-              {
-                name: "email",
-                label: "Email",
-                placeholder: `you@${siteConfig.launch.university.toLowerCase()}.ac.uk`,
-                type: "email",
-              },
-            ]}
-            submitLabel={siteConfig.cta.primary.label}
-            successMessage="You're on the list. We'll message you the moment it's ready."
-          />
-        </div>
+        <Reveal className="lg:pt-2">
+          <div className="card-on-brand p-5 sm:p-7">
+            <InterestForm
+              tone="inverse"
+              fields={[
+                {
+                  name: "email",
+                  label: "Email",
+                  placeholder: `you@${siteConfig.launch.university.toLowerCase()}.ac.uk`,
+                  type: "email",
+                },
+              ]}
+              submitLabel={siteConfig.cta.primary.label}
+              successMessage="You're on the list. We'll message you the moment it's ready."
+              footnote={closing.footnote}
+            />
+          </div>
+        </Reveal>
       </div>
     </Container>
   </Section>
