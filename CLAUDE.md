@@ -44,7 +44,7 @@ teammates to extend, so code clarity matters as much as the visuals.
 | Aceternity components (adapted) | `src/components/ui/` |
 | Shared furniture (header, footer, buttons) | `src/components/site/` |
 | Page sections | `src/components/{home,societies,about}/` |
-| Pages | `src/app/{page,about/page,societies/page,brand/page}.tsx` |
+| Pages | `src/app/{page,how-it-works/page,about/page,societies/page,brand/page}.tsx` |
 | Rendered brand guidelines | `/brand` — reads `tokens.ts` live |
 
 ## Stack notes that will trip you up
@@ -70,9 +70,17 @@ teammates to extend, so code clarity matters as much as the visuals.
   not a screenshot. The source screen recordings contain real student names and
   a face, so they can't be published. The mock weighs nothing and picks up token
   changes for free. Replace it only with clean screenshots from a demo account.
-- **Testimonials ship as visibly-marked placeholders** in dashed boxes, and the
-  society marquee uses generic names. Listing real societies would imply a
-  sign-up that hasn't happened. Don't quietly make either look real.
+- **There are no testimonials on the site.** Marked-empty quote cards drew
+  attention to the absence rather than simply not claiming anything, so the
+  block is gone until there are real quotes. Don't reinstate placeholders.
+- **The society marquee uses generic names**, and no longer carries a
+  disclaimer saying so — the disclaimer was an internal note in public copy.
+  Listing a real society before it has signed up would imply a partnership
+  that doesn't exist, so the warning lives as a TODO in `src/content/home.ts`.
+- **Nothing on the site accuses committees of being disorganised.** "Next
+  year's committee starts from nothing" was cut for this reason: societies do
+  hand over, and a committee that reads a line it knows is untrue stops
+  trusting the rest of the page.
 - **The primary CTA is early access, not a download.** There's no public build.
   When there is: set `stores.appStore` in `src/config/site.ts` and point
   `cta.primary` at it with the label "Download the App". Nothing else changes.

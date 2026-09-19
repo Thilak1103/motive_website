@@ -131,10 +131,11 @@ Each of these is also a `// TODO:` in the code.
       real endpoint (a form service, or a route handler under `src/app/api`).
 - [ ] `src/config/site.ts` — real product name, domain, contact inbox, and the
       real Instagram / TikTok / LinkedIn handles. All are placeholders.
-- [ ] `src/content/home.ts` — the three testimonials are **marked placeholders
-      and must not ship**. Replace with real quotes or delete the block.
+- [ ] No testimonials anywhere yet. The block was removed rather than shipped
+      as marked-empty slots. Add one back only when there are real quotes.
 - [ ] `src/content/home.ts` — confirm which societies have agreed to be listed
-      before using their names in the marquee. The current list is generic.
+      before using their names in the marquee. The current list is generic, and
+      the page no longer carries a disclaimer saying so, so this one matters.
 
 **Before it looks finished**
 - [ ] Real app screenshots. The screen recordings I worked from contain real
@@ -154,7 +155,7 @@ The redesign (branch `feat/brand-design-v2`) was written on a machine with no
 Node installed, so **none of the checks below have been re-run since**. They all
 passed before it. Run them first:
 - [ ] `npm install && npm run build`, `npx tsc --noEmit`, `npm run lint`
-- [ ] All four pages at 375 / 768 / 1440 in a browser: no console errors, no
+- [ ] All five pages at 375 / 768 / 1440 in a browser: no console errors, no
       horizontal overflow, sticky header present after scrolling with the CTA
       reachable without opening the mobile menu
 - [ ] The `/brand` page renders every swatch and type step — it reads
