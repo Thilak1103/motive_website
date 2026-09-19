@@ -5,7 +5,8 @@ import {
   SectionHeading,
   Eyebrow,
 } from "@/components/site/section";
-import { Reveal, revealDelay } from "@/components/site/reveal";
+import { Reveal } from "@/components/site/reveal";
+import { revealDelay } from "@/lib/stagger";
 import { BrandMark, Wordmark } from "@/components/site/wordmark";
 import { CheckIcon, CrossIcon } from "@/components/site/icons";
 import { colors, fontSizes, motionTokens } from "@/config/tokens";

@@ -150,16 +150,22 @@ Each of these is also a `// TODO:` in the code.
       is a commitment. Agree the long-term model before launch, and change that
       section first if societies will ever be charged.
 
-**Needs verifying after the brand-design pass**
-The redesign (branch `feat/brand-design-v2`) was written on a machine with no
-Node installed, so **none of the checks below have been re-run since**. They all
-passed before it. Run them first:
-- [ ] `npm install && npm run build`, `npx tsc --noEmit`, `npm run lint`
-- [ ] All five pages at 375 / 768 / 1440 in a browser: no console errors, no
-      horizontal overflow, sticky header present after scrolling with the CTA
-      reachable without opening the mobile menu
-- [ ] The `/brand` page renders every swatch and type step — it reads
-      `tokens.ts` at build time, so it is the fastest smoke test of the scale
+**Verified**
+- `npm install`, `npm run build`, `npx tsc --noEmit` and `npm run lint` all run
+  clean (Node 22.20.0, npm 10.9.3, Next 16.3.5).
+- `npm run dev` serves all six routes at 200 with no server errors:
+  `/`, `/how-it-works`, `/societies`, `/about`, `/brand`, `/_not-found`.
+- The home page was inspected rendered at 1440.
+
+**Still to check by eye**
+- [ ] All five pages at 375 / 768 / 1440: no horizontal overflow, sticky header
+      present after scrolling with the CTA reachable without opening the mobile
+      menu. Open `http://localhost:3000` and resize — this is a two-minute job
+      in a real browser and is the one thing a build cannot tell you.
+
+> **A build is not optional on this project.** The RSC bug fixed in
+> `fix/rsc-reveal-delay` passed `tsc --noEmit` and only failed at prerender.
+> `npm run build` is the cheapest check that catches that class of error.
 
 ## Conventions
 

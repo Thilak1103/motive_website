@@ -1,5 +1,6 @@
 import { Container, Section, SectionHeading } from "@/components/site/section";
-import { Reveal, revealDelay } from "@/components/site/reveal";
+import { Reveal } from "@/components/site/reveal";
+import { revealDelay } from "@/lib/stagger";
 import { StoryIcon, SearchIcon, FriendsIcon } from "@/components/site/icons";
 import type { ReactElement } from "react";
 import { problem } from "@/content/home";

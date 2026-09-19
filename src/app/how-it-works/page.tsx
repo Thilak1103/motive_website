@@ -6,7 +6,8 @@ import {
   Eyebrow,
   PillMarker,
 } from "@/components/site/section";
-import { Reveal, revealDelay } from "@/components/site/reveal";
+import { Reveal } from "@/components/site/reveal";
+import { revealDelay } from "@/lib/stagger";
 import { CtaButton } from "@/components/site/cta-button";
 import { PhoneFrame } from "@/components/site/phone-frame";
 import { AppPreview } from "@/components/site/app-preview";

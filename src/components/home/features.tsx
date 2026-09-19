@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container, Section, SectionHeading } from "@/components/site/section";
-import { Reveal, revealDelay } from "@/components/site/reveal";
+import { Reveal } from "@/components/site/reveal";
+import { revealDelay } from "@/lib/stagger";
 import { ContentIcon } from "@/components/site/icon-map";
 import { ArrowRightIcon } from "@/components/site/icons";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";

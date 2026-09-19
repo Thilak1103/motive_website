@@ -52,7 +52,3 @@ export const Reveal = ({
     </Component>
   );
 };
-
-/** Convenience for staggering a list without doing the arithmetic inline. */
-export const revealDelay = (index: number, max = 6) =>
-  motionTokens.stagger * Math.min(index, max);
