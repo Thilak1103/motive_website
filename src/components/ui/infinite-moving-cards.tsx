@@ -6,7 +6,7 @@
  *
  * The duplication + CSS-variable speed/direction logic is upstream. Changed
  * here: items are arbitrary nodes rather than a fixed quote/name/title shape,
- * so the same marquee serves both the society strip and the testimonials.
+ * so the same marquee serves any row of repeating items.
  *
  * Requires the `scroll` keyframes registered in tailwind.config.ts.
  */

@@ -36,10 +36,32 @@ Node 20+.
 ## Where things live
 
 **Design tokens → `src/config/tokens.ts`**
-The single source of truth for colour, type and radii. `tailwind.config.ts`
-imports it, so changing a value here changes every utility class too.
-There are no hex values anywhere else in `src/`. Colours were sampled from the
-app itself, not invented.
+The single source of truth for colour, the type scale, radii, elevation and
+motion. `tailwind.config.ts` imports it, so changing a value here changes every
+utility class too. There are no hex values anywhere else in `src/`. The core
+brand and accent hues were sampled from the app itself, not invented.
+
+The type scale is named by role and fluid, so there are no
+`text-3xl sm:text-5xl lg:text-6xl` chains in this codebase — one class covers
+the whole range:
+
+| Class | Use |
+|---|---|
+| `text-display-1` | Hero headline, once per page |
+| `text-display-2` | `<h1>` on inner pages |
+| `text-display-3` | Section `<h2>` |
+| `text-display-4` | Sub-section `<h3>` |
+| `text-title` | Card headings |
+| `text-body-lg` | Section intros and standfirsts |
+| `text-body` / `text-body-sm` | Copy |
+| `text-caption` | Small print |
+| `text-label` | Eyebrows and badges |
+
+**The rendered guidelines → `/brand`**
+A page in the site that renders the swatches, measured contrast pairs, the type
+scale and the motion tokens live from `tokens.ts`. Point new contributors at it
+rather than re-explaining the accent-carries-ink rule. Prose lives in
+`src/content/brand.ts`; nothing on that page is transcribed by hand.
 
 > Accessibility contract: `accent` is a light chartreuse, so it always carries
 > `ink` text, never white. `brand` always carries `ink-inverse` or `brand-tint`.
@@ -59,7 +81,17 @@ domain aren't final, so renaming is a single edit in this one file.
   SVG to keep the mobile bundle small).
 - `src/components/site/` — shared furniture: header, footer, wordmark, CTA
   button, layout primitives, app preview, interest form.
-- `src/components/home/` and `src/components/societies/` — page sections.
+- `src/components/home/`, `src/components/societies/`, `src/components/about/`
+  — page sections.
+
+**Two components worth knowing before you add a third**
+- `<Reveal />` (`src/components/site/reveal.tsx`) — the site's *only* scroll
+  animation. Everything that animates into view goes through it, which is how
+  "restrained" and `prefers-reduced-motion` stay true without anyone having to
+  remember. Don't hand-roll a `motion` entrance next to it.
+- `<SectionHeading />` (`src/components/site/section.tsx`) — eyebrow + heading
+  + standfirst, revealed as one unit. This block used to be written out by hand
+  in every section.
 
 ## Notable decisions
 
@@ -72,6 +104,15 @@ domain aren't final, so renaming is a single edit in this one file.
   opening this from an Instagram link on mobile data.
 - **The app preview is drawn in markup, not an image.** It weighs nothing, stays
   sharp, and picks up token changes. See the TODO below about real screenshots.
+  The hero and the scroll section render the same markup at two sizes, so there
+  is one source of truth for what the app looks like.
+- **No usage numbers anywhere.** The stats band on the home page states facts
+  about the product and the problem (a story lasts 24h, a society pays £0) and
+  never a figure about traction, because there is none. Don't add one until
+  there is something true to say.
+- **Pages are toned in an alternating arc.** Two adjacent sections on the same
+  ground read as one long section, which the first version of the home page did
+  for three sections running. `<Section tone>` carries the grounds.
 - **Sticky Scroll Reveal was swapped for Tracing Beam** on "how it works".
   Sticky Scroll Reveal nests its own scroll container, which fights the page
   scroll on a phone.
@@ -90,10 +131,11 @@ Each of these is also a `// TODO:` in the code.
       real endpoint (a form service, or a route handler under `src/app/api`).
 - [ ] `src/config/site.ts` — real product name, domain, contact inbox, and the
       real Instagram / TikTok / LinkedIn handles. All are placeholders.
-- [ ] `src/content/home.ts` — the three testimonials are **marked placeholders
-      and must not ship**. Replace with real quotes or delete the block.
+- [ ] No testimonials anywhere yet. The block was removed rather than shipped
+      as marked-empty slots. Add one back only when there are real quotes.
 - [ ] `src/content/home.ts` — confirm which societies have agreed to be listed
-      before using their names in the marquee. The current list is generic.
+      before using their names in the marquee. The current list is generic, and
+      the page no longer carries a disclaimer saying so, so this one matters.
 
 **Before it looks finished**
 - [ ] Real app screenshots. The screen recordings I worked from contain real
@@ -102,14 +144,22 @@ Each of these is also a `// TODO:` in the code.
       in `src/components/site/app-preview.tsx`.
 - [ ] `src/app/layout.tsx` — OG image and favicon, once the wordmark is final.
 - [ ] `src/content/about.ts` — the About copy is written from the brief, not
-      from an interview. Rewrite it in your own voice, and add the team.
+      from an interview. Rewrite it in your own voice, and add the team; the
+      team block on `/about` is a marked-empty slot until you do.
+- [ ] `src/content/societies.ts` — the "free, permanently" claim on `/societies`
+      is a commitment. Agree the long-term model before launch, and change that
+      section first if societies will ever be charged.
 
-**Verified**
-- `npm run build`, `tsc --noEmit` and `npm run dev` all run clean.
-- All three pages captured at 375 / 768 / 1440 in Chromium: no console errors,
-  no page errors, no failed requests, no horizontal overflow at any width.
-- Sticky header confirmed present after scrolling at 375 and 1440, with the
-  primary CTA reachable without opening the mobile menu.
+**Needs verifying after the brand-design pass**
+The redesign (branch `feat/brand-design-v2`) was written on a machine with no
+Node installed, so **none of the checks below have been re-run since**. They all
+passed before it. Run them first:
+- [ ] `npm install && npm run build`, `npx tsc --noEmit`, `npm run lint`
+- [ ] All five pages at 375 / 768 / 1440 in a browser: no console errors, no
+      horizontal overflow, sticky header present after scrolling with the CTA
+      reachable without opening the mobile menu
+- [ ] The `/brand` page renders every swatch and type step — it reads
+      `tokens.ts` at build time, so it is the fastest smoke test of the scale
 
 ## Conventions
 

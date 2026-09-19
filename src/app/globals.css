@@ -10,16 +10,21 @@
   }
 
   body {
-    @apply bg-bone font-sans text-ink antialiased;
+    @apply bg-bone font-sans text-base text-ink antialiased;
     text-rendering: optimizeLegibility;
   }
 
+  /*
+   * Headings get the display face and balanced wrapping, but NOT a size —
+   * size is a role, chosen per use from the named scale (`text-display-3`).
+   * Letter-spacing and weight ride along with each scale step, so there is no
+   * global tracking rule here any more.
+   */
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     @apply font-display;
-    /* The app sets headlines tight and heavy; this matches it. */
-    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
@@ -37,6 +42,33 @@
 
   .on-brand :focus-visible {
     @apply ring-offset-brand;
+  }
+}
+
+@layer components {
+  /*
+   * THE BRAND DEVICE.
+   *
+   * Motive turns a scatter of Instagram stories into a timetable, so the
+   * recurring mark across the site is a time-slot pill — the same element the
+   * app puts on the left of every event row. It labels steps, stats and
+   * features here exactly as it labels 18:00 in the feed.
+   */
+  .pill-marker {
+    @apply inline-flex shrink-0 items-center justify-center rounded-pill px-2.5 py-1 font-display text-label uppercase;
+  }
+
+  /*
+   * Hairline-outlined card on the light ground. The app separates surfaces
+   * with a rule rather than a shadow; so does the site.
+   */
+  .card-surface {
+    @apply rounded-card border border-surface-line bg-surface;
+  }
+
+  /* The same card on the brand-coloured ground. */
+  .card-on-brand {
+    @apply rounded-card border border-brand-tint/25 bg-brand-raised;
   }
 }
 
