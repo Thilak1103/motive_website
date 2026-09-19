@@ -6,7 +6,8 @@ import {
   Eyebrow,
   PillMarker,
 } from "@/components/site/section";
-import { Reveal, revealDelay } from "@/components/site/reveal";
+import { Reveal } from "@/components/site/reveal";
+import { revealDelay } from "@/lib/stagger";
 import { ContentIcon } from "@/components/site/icon-map";
 import { CheckIcon } from "@/components/site/icons";
 import { about } from "@/content/about";

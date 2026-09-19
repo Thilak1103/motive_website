@@ -1,6 +1,7 @@
 import { Container, Eyebrow } from "@/components/site/section";
 import { CtaButton } from "@/components/site/cta-button";
-import { Reveal, revealDelay } from "@/components/site/reveal";
+import { Reveal } from "@/components/site/reveal";
+import { revealDelay } from "@/lib/stagger";
 import { CheckIcon } from "@/components/site/icons";
 import { societiesPage } from "@/content/societies";
 import { siteConfig } from "@/config/site";
