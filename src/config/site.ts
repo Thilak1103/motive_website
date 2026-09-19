@@ -71,6 +71,11 @@ export const siteConfig = {
       label: "For societies",
       href: "/societies",
     } satisfies CallToAction,
+    /** Sends students from the home page to the walkthrough. */
+    howItWorks: {
+      label: "See how it works",
+      href: "/how-it-works",
+    } satisfies CallToAction,
     /** Committee-facing action used on /societies. */
     societies: {
       label: "List your society",
@@ -84,7 +89,7 @@ export const siteConfig = {
    */
   nav: [
     { name: "About", link: "/about" },
-    { name: "How it works", link: "/#how-it-works" },
+    { name: "How it works", link: "/how-it-works" },
     { name: "For societies", link: "/societies" },
   ] satisfies NavItem[],
 
@@ -93,7 +98,7 @@ export const siteConfig = {
     {
       heading: "Students",
       items: [
-        { name: "How it works", link: "/#how-it-works" },
+        { name: "How it works", link: "/how-it-works" },
         { name: "What you get", link: "/#features" },
         { name: "Questions", link: "/#faq" },
         { name: "Get early access", link: "/#early-access" },

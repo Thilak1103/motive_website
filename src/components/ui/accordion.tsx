@@ -24,11 +24,14 @@ const AccordionRow = ({
   isOpen,
   onToggle,
   tone,
+  isFirst,
 }: {
   item: FaqItem;
   isOpen: boolean;
   onToggle: () => void;
   tone: "ink" | "inverse";
+  /** The first row loses its top padding so it aligns with the heading beside it. */
+  isFirst: boolean;
 }) => {
   const id = useId();
   const inverse = tone === "inverse";
@@ -49,6 +52,10 @@ const AccordionRow = ({
           id={`${id}-trigger`}
           className={cn(
             "flex w-full items-start justify-between gap-4 py-5 text-left font-display text-[1.0625rem] font-bold leading-snug transition-colors duration-[180ms] ease-brand sm:text-[1.15rem]",
+            // Sits in a two-column block next to a heading. With the default
+            // top padding the first question hung below the heading's eyebrow
+            // and the two columns read as misaligned.
+            isFirst && "pt-0 lg:pt-0",
             inverse
               ? "text-ink-inverse hover:text-accent"
               : "text-ink hover:text-brand",
@@ -112,17 +119,14 @@ export const Accordion = ({
 
   return (
     <div
-      className={cn(
-        "border-t",
-        tone === "inverse" ? "border-brand-tint/20" : "border-ink/10",
-        className,
-      )}
+      className={cn(className)}
     >
       {items.map((item, index) => (
         <AccordionRow
           key={item.question}
           item={item}
           tone={tone}
+          isFirst={index === 0}
           isOpen={openIndex === index}
           // Single-open: opening a row closes the others, so the block never
           // grows tall enough to lose the reader's place on a phone.

@@ -58,10 +58,10 @@ export const societiesPage = {
           "New form, new sheet, chase the responses, copy the names onto a door list. Every single event.",
       },
       {
-        icon: "archive" as SocietyIconKey,
-        title: "Next year's committee starts from nothing",
+        icon: "megaphone" as SocietyIconKey,
+        title: "After Freshers' Fair, nobody new finds you",
         description:
-          "The spreadsheets are in someone's personal Drive and that someone graduated.",
+          "One afternoon at a stall is the whole discovery budget. From week two you are only ever talking to people who already found you.",
       },
     ],
   },
@@ -101,9 +101,9 @@ export const societiesPage = {
         after: "Actual attendance, per event",
       },
       {
-        label: "Next year's committee",
-        before: "Starts from nothing",
-        after: "Inherits every event and every number",
+        label: "Reaching new people",
+        before: "Freshers' Fair, then nothing",
+        after: "Every student browsing what's on, all year",
       },
     ],
   },
@@ -132,10 +132,16 @@ export const societiesPage = {
         icon: "qr",
       },
       {
-        title: "A whole term, managed",
+        title: "A page students follow",
         description:
-          "Every event in one place, handed to next year's committee intact.",
-        icon: "archive",
+          "Followers get every event you post, without you posting twice.",
+        icon: "feed",
+      },
+      {
+        title: "Your whole committee",
+        description:
+          "Admin access for everyone who runs events, not one person's login.",
+        icon: "friends",
       },
     ] satisfies Benefit[],
   },
@@ -205,7 +211,7 @@ export const societiesPage = {
       {
         question: "What happens at handover?",
         answer:
-          "The society page and everything in it belongs to the society, not to the person who set it up. Next year's committee gets the whole history — every event, every number — instead of starting from scratch.",
+          "The society page belongs to the society, not to whoever set it up. You pass admin access on the way you pass on everything else, and the events and attendance history stay attached to the page rather than to a personal account.",
       },
       {
         question: "Can we run members-only events?",

@@ -12,7 +12,7 @@ import { siteConfig } from "@/config/site";
 export const ClosingCta = () => (
   <Section tone="brand-deep" id="early-access" grid>
     <Container>
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
         <SectionHeading
           eyebrow={closing.eyebrow}
           headline={closing.headline}
@@ -20,7 +20,7 @@ export const ClosingCta = () => (
           tone="inverse"
         />
 
-        <Reveal className="lg:pt-2">
+        <Reveal>
           <div className="card-on-brand p-5 sm:p-7">
             <InterestForm
               tone="inverse"

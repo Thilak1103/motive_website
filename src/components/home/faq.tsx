@@ -6,7 +6,7 @@ import { faq } from "@/content/home";
 export const Faq = () => (
   <Section tone="bone" id="faq">
     <Container>
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
         <SectionHeading
           eyebrow={faq.eyebrow}
           headline={faq.headline}

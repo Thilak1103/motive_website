@@ -32,18 +32,6 @@ export const hero = {
   reassurance: "Free for students. Free for societies. No app to download yet — we'll message you when there is.",
 };
 
-/**
- * The stats band. Every figure here is a statement about how the product or the
- * problem works, not a claim about traction — we have no users yet, so there
- * are no usage numbers on this site and there must not be until there are.
- */
-export const stats = [
-  { figure: "24h", label: "How long a story lasts before it's gone" },
-  { figure: "1", label: "Feed, instead of seventeen separate accounts" },
-  { figure: "2", label: "Taps from seeing an event to being on the list" },
-  { figure: "£0", label: "What it costs a society to be listed" },
-];
-
 export const problem = {
   eyebrow: "The problem",
   headline: "It's on a story that disappeared at 4am.",
@@ -116,40 +104,17 @@ export const features: Feature[] = [
 export const featuresIntro = {
   eyebrow: "What you get",
   headline: "Small app. Does the whole job.",
-};
-
-export const howItWorks = {
-  eyebrow: "How it works",
-  headline: "Three taps between you and a room full of people.",
-  steps: [
-    {
-      number: "01",
-      title: "Follow your societies",
-      description:
-        "Search the full list, follow the ones you're in and the ones you're curious about. You can change your mind whenever.",
-    },
-    {
-      number: "02",
-      title: "See what's actually on",
-      description:
-        "Open the app and your week is already there — tonight, this week, and everything your friends are going to.",
-    },
-    {
-      number: "03",
-      title: "Tap going",
-      description:
-        "You're on the list. The society knows you're coming, and so do your mates.",
-    },
-  ] satisfies Step[],
+  /** Sends the reader to /how-it-works, which is no longer a section here. */
+  linkLabel: "See how it works",
 };
 
 export const socialProof = {
   eyebrow: "Societies",
-  headline: "Built for societies like these.",
-  // TODO: confirm which societies have agreed to be listed before launch, and
-  // replace this strip with their names (or logos, if we get permission).
-  societiesNote:
-    "Generic names until societies have signed up — nothing here implies a partnership that doesn't exist yet.",
+  headline: "Every kind of society, not just the big ones.",
+  lead: "The 400-member union with a budget and the eight people who meet on a Thursday get the same feed, the same sign-ups and the same door list.",
+  // TODO: these are generic society names, not real ones. Before launch,
+  // replace them with societies that have actually signed up — using a real
+  // society's name here would imply a partnership nobody has agreed to.
   societies: [
     "Economics Society",
     "Drama Society",
@@ -163,30 +128,6 @@ export const socialProof = {
     "African & Caribbean Society",
     "Photography Society",
     "Dance Society",
-  ],
-  // TODO: replace with real quotes once we have users. Do not ship these.
-  testimonialsLabel: "Placeholder — no real quotes yet",
-  testimonialsNote:
-    "We haven't launched, so nobody has used this. These slots are where real student and committee quotes go once they have.",
-  testimonials: [
-    {
-      quote:
-        "A first-year's quote about finding something they'd otherwise have missed.",
-      name: "First-year student",
-      title: "Slot reserved",
-    },
-    {
-      quote:
-        "A committee quote about running an event through it — sign-ups, door list, headcount.",
-      name: "Society president",
-      title: "Slot reserved",
-    },
-    {
-      quote:
-        "A third quote, or cut this card entirely if we only get two worth using.",
-      name: "Second-year student",
-      title: "Slot reserved",
-    },
   ],
 };
 
